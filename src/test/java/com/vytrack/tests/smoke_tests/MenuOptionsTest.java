@@ -4,7 +4,10 @@ import com.vytrack.utilities.Library;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -26,6 +29,13 @@ public class MenuOptionsTest {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("http://qa2.vytrack.com/user/login");
     }
+
+//    public void explicitWait(){
+//        driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+//        WebDriverWait wait = new WebDriverWait(driver,5);
+//        wait.until(ExpectedConditions.visibilityOf(element));
+//    }
+
     @Test
     public void Test1(){
         driver.get("http://qa2.vytrack.com/user/login");
@@ -36,16 +46,16 @@ public class MenuOptionsTest {
        //driver.findElement(By.xpath("//*[text()='Vehicles']")).click();
         driver.findElement(By.cssSelector("span[class='title title-level-1']")).click();
        driver.findElement(By.cssSelector("span[class='title title-level-2']")).click();
-        Library.sleep(2);
+        Library.sleep(4);
        String expected="Car - Entities - System - Car - Entities - System";
        String actual=driver.getTitle();
        Library.verifyEquals(expected,actual);
 
-       Library.sleep(3);
+       Library.sleep(4);
        driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span")).click();
        driver.findElement(By.xpath("//*[text()='Accounts']")).click();
 
-       Library.sleep(2);
+       Library.sleep(4);
         System.out.println("=============");
         System.out.println( driver.getTitle());
         System.out.println(  driver.getTitle().contains("Accounts")? "PASSED":"FAILED"   );
@@ -54,16 +64,16 @@ public class MenuOptionsTest {
 
         driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[2]/a/span")).click();
         driver.findElement(By.xpath("//*[text()='Contacts']")).click();
-        Library.sleep(2);
+        Library.sleep(4);
         System.out.println("=============");
         System.out.println( driver.getTitle());
         System.out.println(  driver.getTitle().contains("Contacts")? "PASSED":"FAILED"   );
         System.out.println("=============");
 
-Library.sleep(2);
+        Library.sleep(4);
         driver.findElement(By.xpath("//*[@id=\"main-menu\"]/ul/li[3]/a/span")).click();
         driver.findElement(By.xpath("//*[text()='Calendar Events']")).click();
-        Library.sleep(2);
+        Library.sleep(4);
         System.out.println("=============");
         System.out.println( driver.getTitle());
         System.out.println(  driver.getTitle().contains("Calendar Events")? "PASSED":"FAILED"   );
